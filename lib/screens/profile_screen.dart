@@ -14,7 +14,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Center(
       child: ElevatedButton(
-          onPressed: () => context.read<AuthProvider>().signOut,
+          onPressed: () {
+            context.read<AuthProvider>().signOut();
+          },
           child: const Text("SIGN OUT")),
     );
   }

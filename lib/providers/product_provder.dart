@@ -23,6 +23,7 @@ class ProductProvider extends ChangeNotifier {
 
   void closeProductDetail() {
     _selectedProduct = null;
+
     navigatorKey.currentState?.pop();
     notifyListeners();
   }
@@ -40,12 +41,12 @@ class ProductProvider extends ChangeNotifier {
   }
 
   void fetchProductDetail(int productID) async {
+    setLoadingStatus(value: true, isUpdate: false);
     _selectedProduct =
         await _apiServices.fetchProductDetail(productID: productID);
     setLoadingStatus(value: false);
     navigatorKey.currentState
         ?.push(MaterialPageRoute(builder: (_) => ProductDetailScreen()));
-    setLoadingStatus(value: true, isUpdate: false);
 
     notifyListeners();
   }

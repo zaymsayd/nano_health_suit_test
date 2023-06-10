@@ -40,11 +40,10 @@ class AuthProvider extends ChangeNotifier {
   }
 
   void signOut() {
-    AppSharedPreference sharedPreference = AppSharedPreference();
-    sharedPreference.clearAll();
     navigatorKey.currentState
         ?.pushReplacement(MaterialPageRoute(builder: (_) => LoginScreen()));
-    notifyListeners();
+    AppSharedPreference sharedPreference = AppSharedPreference();
+    sharedPreference.clearAll();
   }
 
   TextEditingController get usernameController => _usernameController;

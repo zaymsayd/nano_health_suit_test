@@ -20,7 +20,6 @@ class NetworkUtil {
 
     print("URL : $url Headers $headers");
     Uri uri = Uri.parse(url);
-    // Uri uri = Uri.https("pinmicro.com", "apps/eventplus/generalapp/app_version.json");
     return http.get(uri, headers: headers).then((http.Response response) {
       final String res = response.body;
       final int statusCode = response.statusCode;
@@ -90,33 +89,6 @@ class NetworkUtil {
     });
   }
 
-//uncomment when need
-//  Future<StreamedResponse> postMultipartFormData(String url, String field, {File file, Map headers, Map params}) async {
-//    String fileName = basename(file.path);
-//    String mimeType = mime(fileName);
-//    print("mime type  : " + mimeType);
-//    print("Url :  $url");
-//    var uri = Uri.parse(url);
-//    var request = http.MultipartRequest("POST", uri);
-//
-//    if (null != params) {
-//      request.fields.addAll(params);
-//    }
-//    if (null != headers) {
-//      request.headers.addAll(headers);
-//    }
-//    request.files.add(await http.MultipartFile.fromPath(
-//      field,
-//      file.path,
-//      contentType: MediaType.parse(mimeType),
-//    ));
-//
-//    return request.send().then((response) {
-//      return response;
-//    }).catchError((Object e) {
-//      throw Error(ErrorCodes.NO_INTERNET, "Unable to reach server at the moment");
-//    });
-//  }
 
   Future<bool> isConnectionAvailable() async {
     bool connected = false;
